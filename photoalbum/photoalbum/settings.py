@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure-6_g8@*8ywg_sk^x(%fnl@pz9&7bw%8&*j0e)3(-6!iqsw9e^wq
 DEBUG = True
 
 ALLOWED_HOSTS =  ['*']
+CSRF_TRUSTED_ORIGINS = ['https://photo-album-git-farkas-fanni-dev.apps.rm2.thpm.p1.openshiftapps.com']
 
 
 # Application definition
