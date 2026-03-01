@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% block title %}
+    Photos
+{% endblock %}
+
+{% block content %}
+     {% for photo in photos %}
+            <artical>
+                <h2>
+                    <a href = "{% url 'photos:picture' name=photo.title %}">
+                        {{ photo.title }}
+                    </a>
+                </h2>
+                <p>{{ photo.date }}</p>
+            </artical>
+    {% endfor %}
+{% endblock %}
