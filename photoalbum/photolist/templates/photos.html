@@ -5,13 +5,13 @@
 
 {% block content %}
      {% for photo in photos %}
-            <artical>
+            <article class='animation'>
                 <h2>
                     <a href = "{% url 'photos:picture' name=photo.title %}">
                         {{ photo.title }}
                     </a>
                 </h2>
                 <p>{{ photo.date }}</p>
-            </artical>
+            </article>
     {% endfor %}
 {% endblock %}

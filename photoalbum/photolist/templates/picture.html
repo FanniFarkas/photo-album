@@ -4,15 +4,12 @@
 {% endblock %}
 
 {% block content %}
-     <h1>Photo<h1>
-    <artical>
-        <h2>
-            {{ photo.title }}
-        </h2>
+     <h1> {{ photo.title }}<h1>
+    <article>
         <p>{{ photo.date }}</p>
         <img 
             src = "{{photo.picture.url}}"
             alt = "{{photo.title}}">
-    </artical>
+    </article>
 {% endblock %}
 

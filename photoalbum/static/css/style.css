@@ -1,0 +1,236 @@
+
+:root {
+    --primary: #2563eb;
+    --dark: #1e293b;
+    --light: #f8fafc;
+    --text: #334155;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light);
+    color: var(--text);
+    margin: 0;
+    line-height: 1.6;
+}
+
+
+nav {
+    background-color: var(--dark);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: var(--shadow);
+    justify-content: flex-start;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--primary);
+}
+
+nav form {
+    display: inline; /* Hogy egy vonalba kerüljön a linkekkel */
+    margin: 0;
+    padding: 0;
+    background: none; /* Töröljük a korábbi általános form hátteret */
+    box-shadow: none;
+    margin-left: auto;
+}
+nav form button {
+    background: none;
+    border: none;
+    color: white;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    transition: color 0.3s;
+    text-decoration: none;
+}
+
+/* Hover effekt, hogy ugyanúgy viselkedjen, mint a Home link */
+nav form button:hover {
+    color: #2563eb; /* Ugyanaz a kék, mint a linkeknél */
+}
+nav button {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    cursor: pointer;
+}
+
+
+main {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+h1 {
+    color: var(--dark);
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+
+.photo-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;              /* Megnövelt távolság a kártyák között */
+    padding: 20px 0;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+article {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    margin-bottom: 10px;    /* Plusz biztonsági távolság */
+    padding: 25px !important;
+}
+
+.animation:hover {
+    transform: translateY(-5px);
+}
+
+article img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+article h2 a {
+    color: var(--dark);
+    text-decoration: none;
+}
+
+
+form {
+    background: white;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: var(--shadow);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+form p {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+form input {
+    padding: 0.5rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.25rem;
+}
+
+button[type="submit"], form button {
+    width: 100%;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+/* 1. A Django által generált hibaüzenet lista stílusa */
+.errorlist {
+    margin: 0 0 1.5rem 0;
+    padding: 0;
+    list-style: none;
+    background-color: #fee2e2; /* Világospiros háttér */
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+}
+
+/* 2. Az egyes hibaüzenetek a listán belül */
+.errorlist li {
+    color: #b91c1c; /* Sötétpiros szöveg */
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 10px 15px;
+    border-bottom: 1px solid #fecaca;
+}
+
+.errorlist li:last-child {
+    border-bottom: none;
+}
+
+
+form p {
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 4. A Django által generált Label-ek */
+form label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #334155;
+    display: block;
+}
+
+/* 5. A súgószövegek (help_text), amik a jelszókövetelményeket mutatják */
+.helptext {
+    display: block;
+    font-size: 0.75rem;
+    color: #64748b;
+    margin-top: 0.25rem;
+    line-height: 1.4;
+}
+
+/* 6. Az input mezők formázása (attribútum szelekttal, ha nincs class) */
+form input[type="text"],
+form input[type="password"],
+form input[type="email"],
+form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+/* 7. Ha egy mező hibás, a Django néha 'invalid' állapotot vagy hiba listát tesz mellé */
+form input:invalid {
+    border-color: #fca5a5;
+}
+
+article p {
+    font-size: 0.85rem;      /* Kisebb betűméret */
+    color: #64748b;          /* Szürkébb, kevésbé tolakodó szín */
+    margin-top: -10px;       /* Közelebb húzzuk a címhez */
+    margin-bottom: 15px;     /* Térköz a kép előtt */
+    font-style: italic;      /* Dőlt betű, hogy elkülönüljön */
+}
