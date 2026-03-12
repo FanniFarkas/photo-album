@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Photo
 from django.contrib.auth.decorators import login_required
-
+from . import forms
 
 def photo_list(request):
     photos = Photo.objects.all()
@@ -17,4 +17,14 @@ def picture_page(request, name):
 
 @login_required(login_url="/users/login")
 def new_photo_page(request):
-    return render(request, 'new_photo.html')
+    if request.method == 'POST':
+        form = forms.CreatePhoto(request.POST, request.FILES)
+        if form.is_valid():
+            newphoto=form.save(commit=False)
+            newphoto.owner = request.user
+            newphoto.save()
+            return redirect('photos:list')
+    else:
+        form = forms.CreatePhoto()
+    return render(request, 'new_photo.html', {'form': form})
+

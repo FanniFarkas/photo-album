@@ -6,5 +6,11 @@
 {% block content %}
     <section>
         <h1>New Photo</h1>
+        <form action="{% url 'photos:new' %}" method="post" 
+        enctype ="multipart/form-data">
+        {% csrf_token %}
+        {{form}}
+        <button class ="form-submit">Add Photo</button>
+        </form>
     </section>
 {% endblock %}
