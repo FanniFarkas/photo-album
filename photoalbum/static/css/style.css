@@ -234,3 +234,18 @@ article p {
     margin-bottom: 15px;     /* Térköz a kép előtt */
     font-style: italic;      /* Dőlt betű, hogy elkülönüljön */
 }
+
+.btn-delete {
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-delete:hover {
+    background-color: #dc2626;
+}

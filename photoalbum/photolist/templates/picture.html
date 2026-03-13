@@ -10,6 +10,12 @@
         <img 
             src = "{{photo.picture.url}}"
             alt = "{{photo.title}}">
+        {% if user.is_authenticated and photo.owner == user %}
+        <form action="{% url 'photos:delete' name=photo.title %}" method="post" style="margin-top: 20px;">
+            {% csrf_token %}
+            <button type="submit" class="btn-delete">Delete Photo</button>
+        </form>
+    {% endif %}
     </article>
 {% endblock %}
 

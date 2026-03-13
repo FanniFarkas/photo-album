@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Photo
 from django.contrib.auth.decorators import login_required
 from . import forms
@@ -27,4 +27,13 @@ def new_photo_page(request):
     else:
         form = forms.CreatePhoto()
     return render(request, 'new_photo.html', {'form': form})
+
+@login_required(login_url="/users/login")
+def delete_photo(request, name):
+    photo = get_object_or_404(Photo, title=name)
+    
+    if photo.owner == request.user:
+        photo.delete()
+    
+    return redirect('photos:list')
 
