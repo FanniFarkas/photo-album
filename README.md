@@ -1,10 +1,34 @@
-# Photo Album - Django Project
+# Projekt Dokumentáció: Photo Album
+## Választott környezet
+* **Platform:** Red Hat OpenShift 
+* **Deployment:** GitHub-alapú Source-to-Image (S2I) folyamat
+* **Build folyamat:** Hálózati korlátok miatt az OpenShift build-végpontja nem érhető el kívülről a GitHub számára, ezért a Webhook-alapú automatizálás helyett manuálisan indított Build folyamat biztosítja a frissítéseket
+* **Skálázhatóság:** Az alkalmazás alkalmas vízszintes skálázásra (Horizontal Scaling), így a terhelés függvényében több párhuzamos példány (Pod) is kiszolgálhatja a forgalmat
+* **Adatbiztonság és Perzisztencia:** A futó példányok számától vagy újraindításától független adatmegőrzést a csatolt perzisztens tároló (PVC) biztosítja
 
-## Fontos tudnivalók 
-* **Adatbázis:** Az app **SQLite**-ot használ. Ez azt jelenti, hogy OpenShiften minden egyes új Build vagy újraindítás után az adatok (felhasználók, fotó hivatkozások) elveszhetnek, mivel a fájlrendszer nem perzisztens.
-* **Fotók kezelése:** Ebben a verzióban fotót feltölteni és törölni **kizárólag a Django Admin felületén** (`/admin`) keresztül lehet. A felhasználói felület (UI) jelenleg csak a képek megtekintésére és a regisztrációra szolgál.
+---
 
-## ✨ Funkciók
-* Regisztráció és Login rendszer.
-* Responsive galéria nézet
-* Egyedi képnézegető oldal
+## Alkalmazás rétegek
+
+### 1. Megjelenítési réteg (Frontend)
+* **Sablonkezelés:** Django Template Language (DTL)
+* **Stílus:** Egyedi CSS, reszponzív kártya-alapú elrendezéssel
+
+### 2. Alkalmazás réteg (Backend)
+* **Framework:** Django (Python)
+* **Logika:** 
+    * `views.py`: Kép hozzáadás, listázás és törlés
+    * `urls.py`: URL struktúra (pl. `<slug:name>/delete/`)
+
+### 3. Adatréteg (Storage)
+* **Adatbázis:** SQLite3 
+* **Fájlrendszer:** `media/` könyvtár a feltöltött képeknek
+* **Perzisztencia:** **Persistent Volume Claim (PVC)** használata az adatok állandóságáért
+
+---
+
+## Biztonsági Kapcsolatok
+* **User Authentication:** Csak bejelentkezett felhasználók tölthetnek fel képet, illetve a  felhasználók csak a saját tartalmaikat törölhetik
+* **CSRF védelem:** Minden űrlap (feltöltés, törlés) titkosított tokennel védett a Cross-Site Request Forgery támadások ellen
+
+---
