@@ -27,7 +27,7 @@
 
 ---
 
-## Biztonsági Kapcsolatok
+## Biztonság
 * **User Authentication:** Csak bejelentkezett felhasználók tölthetnek fel képet, illetve a  felhasználók csak a saját tartalmaikat törölhetik
 * **CSRF védelem:** Minden űrlap (feltöltés, törlés) titkosított tokennel védett a Cross-Site Request Forgery támadások ellen
 
