@@ -4,6 +4,15 @@
 {% endblock %}
 
 {% block content %}
+
+<div class="sorting-controls mb-4">
+    <p>Rendezés:</p>
+    <a href="?sort=title" class="btn btn-outline-primary btn-sm">Név (A-Z)</a>
+    <a href="?sort=-title" class="btn btn-outline-primary btn-sm">Név (Z-A)</a>
+    <a href="?sort=-uploaded_at" class="btn btn-outline-primary btn-sm">Legújabb elöl</a>
+    <a href="?sort=uploaded_at" class="btn btn-outline-primary btn-sm">Legrégebbi elöl</a>
+</div>
+
      {% for photo in photos %}
             <article class='animation'>
                 <h2>

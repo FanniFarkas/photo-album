@@ -4,8 +4,17 @@ from django.contrib.auth.decorators import login_required
 from . import forms
 
 def photo_list(request):
-    photos = Photo.objects.all()
-    return render(request, 'photos.html', {'photos' : photos})
+    sort_by = request.GET.get('sort', '-uploaded_at')
+
+    allowed_sort_fields = ['title', '-title', 'uploaded_at', '-uploaded_at']
+    
+    if sort_by not in allowed_sort_fields:
+        sort_by = '-uploaded_at'
+
+    photos = Photo.objects.all().order_by(sort_by)
+    
+    return render(request, 'photo_album/photo_list.html', {'photos': photos})
+
 
 def picture_page(request, name):
     photo = Photo.objects.get(title = name)
