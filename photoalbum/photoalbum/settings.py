@@ -31,7 +31,8 @@ SECRET_KEY = 'django-insecure-6_g8@*8ywg_sk^x(%fnl@pz9&7bw%8&*j0e)3(-6!iqsw9e^wq
 DEBUG = True
 
 ALLOWED_HOSTS =  ['*']
-CSRF_TRUSTED_ORIGINS = ['https://photo-album-git-farkas-fanni-dev.apps.rm2.thpm.p1.openshiftapps.com']
+CSRF_TRUSTED_ORIGINS = ['https://photo-album-git-farkas-fanni-dev.apps.rm2.thpm.p1.openshiftapps.com',
+                        'https://photo-album-git-two-tesztelek1234-dev.apps.rm3.7wse.p1.openshiftapps.com/']
 
 
 # Application definition
@@ -83,9 +84,10 @@ WSGI_APPLICATION = 'photoalbum.wsgi.application'
 
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL')
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
