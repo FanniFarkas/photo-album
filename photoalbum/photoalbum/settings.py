@@ -32,7 +32,7 @@ DEBUG = True
 
 ALLOWED_HOSTS =  ['*']
 CSRF_TRUSTED_ORIGINS = ['https://photo-album-git-farkas-fanni-dev.apps.rm2.thpm.p1.openshiftapps.com',
-                        'https://photo-album-git-two-tesztelek1234-dev.apps.rm3.7wse.p1.openshiftapps.com/']
+                        'https://photo-album-git-two-tesztelek1234-dev.apps.rm3.7wse.p1.openshiftapps.com']
 
 
 # Application definition
