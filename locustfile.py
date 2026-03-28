@@ -9,8 +9,7 @@ class PhotoAlbumUser(HttpUser):
 
     @task(2)
     def view_photolist(self):
-        # Feltételezve, hogy ez az albumod elérési útja
-        self.client.get("/photolist/")
+        self.client.get("/")
 
     @task(1)
     def check_login_page(self):
