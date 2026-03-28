@@ -16,7 +16,7 @@ class PhotoAlbumFullTest(HttpUser):
         csrftoken = reg_page.cookies.get('csrftoken', '')
 
     
-        self.client.post("/users/register/", {
+        self.client.post("/users/register", {
             "username": self.username,
             "password": self.password,
             "password_confirm": self.password,
@@ -24,7 +24,7 @@ class PhotoAlbumFullTest(HttpUser):
         }, headers={"Referer": self.host + "/users/register/"})
 
     
-        self.client.post("/users/login/", {
+        self.client.post("/users/login", {
             "username": self.username,
             "password": self.password,
             "csrfmiddlewaretoken": csrftoken
@@ -57,4 +57,4 @@ class PhotoAlbumFullTest(HttpUser):
 
     @task(1)
     def view_random_photo_detail(self):
-        self.client.get("/photolist/rzs/")
+        self.client.get("/rzs/")
