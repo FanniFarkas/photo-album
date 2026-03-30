@@ -12,7 +12,7 @@ class PhotoAlbumFullTest(HttpUser):
         self.password = "TestPassword123!"
 
     
-        reg_page = self.client.get("/users/register/")
+        reg_page = self.client.get("/users/register")
         csrftoken = reg_page.cookies.get('csrftoken', '')
 
     
@@ -22,7 +22,7 @@ class PhotoAlbumFullTest(HttpUser):
             "password_confirm": self.password,
             "csrfmiddlewaretoken": csrftoken
         }, headers={
-            "Referer": self.host + "/users/register/",
+            "Referer": self.host + "/users/register",
             "X-CSRFToken": csrftoken
             })
 
