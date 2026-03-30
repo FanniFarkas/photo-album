@@ -21,14 +21,20 @@ class PhotoAlbumFullTest(HttpUser):
             "password": self.password,
             "password_confirm": self.password,
             "csrfmiddlewaretoken": csrftoken
-        }, headers={"Referer": self.host + "/users/register/"})
+        }, headers={
+            "Referer": self.host + "/users/register/",
+            "X-CSRFToken": csrftoken
+            })
 
     
         self.client.post("/users/login", {
             "username": self.username,
             "password": self.password,
             "csrfmiddlewaretoken": csrftoken
-        }, headers={"Referer": self.host + "/users/login/"})
+        }, headers={
+            "Referer": self.host + "/users/login/", 
+            "X-CSRFToken": csrftoken
+            })
 
     @task(5)
     def view_gallery(self):
